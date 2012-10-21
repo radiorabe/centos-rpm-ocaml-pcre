@@ -1,0 +1,11 @@
+--- pcre-ocaml-6.2.5-old/OCamlMakefile	2012-01-04 11:28:16.000000000 -0500
++++ pcre-ocaml-6.2.5/OCamlMakefile	2012-10-21 00:52:46.450193697 -0400
+@@ -1227,7 +1227,7 @@
+ .PHONY: libinstall
+ libinstall:	all
+ 	$(QUIET)printf "\nInstalling library with ocamlfind\n"
+-	$(OCAMLFIND) install $(OCAMLFIND_INSTFLAGS) $(RESULT) META $(LIBINSTALL_FILES)
++	$(OCAMLFIND) install -destdir $(DESTDIR) -ldconf ignore $(OCAMLFIND_INSTFLAGS) $(RESULT) META $(LIBINSTALL_FILES)
+ 	$(QUIET)printf "\nInstallation successful.\n"
+ 
+ .PHONY: libinstall-byte-code
