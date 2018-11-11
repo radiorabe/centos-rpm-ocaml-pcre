@@ -1,18 +1,14 @@
-#CentOS OCaml PCRE RPM
+# CentOS 7 RPM Specfile for ocaml-pcre
 
-##Instructions
+This repository contains the specfile for [ocaml-pcre](https://github.com/mmottl/pcre-ocaml) which is part of the [RaBe liquidsoap distribution](https://build.opensuse.org/project/show/home:radiorabe:liquidsoap).
 
-After pulling, make sure to run 
+## Usage
 
-`mkdir -p {BUILD,RPMS,SOURCES,SPECS,SRPMS}`
+```bash
+yum install https://download.opensuse.org/repositories/home:/radiorabe:/liquidsoap/CentOS_7/home:radiorabe:liquidsoap.repo
+yum install ocaml-pcre
+```
 
-in the base git repository to create all necessary directories.
+## Credits
 
-You can run 
-
-`rpmbuild -ba SPECS/ocaml-pcre.spec` 
-
-from the base directory to build the package. Do *not* run this as root.
-
-Currently there is one patch file which adds support to the OCamlMakefile
-for specifying the destination directory (necessary for an RPM build)
+* Based on the original work in [mkonecny/pcre-ocaml-centos-rpm](https://github.com/mkonecny/pcre-ocaml-centos-rpm)
