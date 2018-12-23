@@ -1,6 +1,6 @@
 Name:     ocaml-pcre
 Version:  7.3.4
-Release:  0.0%{dist}
+Release:  0.1%{dist}
 Summary:  OCAML PCRE Bindings
 
 %global libname %(echo %{name} | sed -e 's/^ocaml-//')
@@ -46,7 +46,7 @@ dune build @install
 %install
 install -d %{buildroot}/%{_libdir}/ocaml
 pushd src
-jbuilder install --libdir=%{buildroot}/usr/lib64/ocaml --prefix=%{buildroot}/usr/lib64/ocaml
+jbuilder install --libdir=%{buildroot}%{_libdir}/ocaml --prefix=%{buildroot}%{_libdir}/ocaml
 popd
 
 %files
@@ -73,6 +73,9 @@ popd
 %endif
 
 %changelog
+* Sun Dec 23 2018 Lucas Bickel <hairmare@rabe.ch> - 7.3.4-0.1
+- Fix jbuilder call for non x86_64 archs
+
 * Sun Nov 11 2018 Lucas Bickel <hairmare@rabe.ch> - 7.3.4-0.0
 - Onboard pcre package into LSD
 
