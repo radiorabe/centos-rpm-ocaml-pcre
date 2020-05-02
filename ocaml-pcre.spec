@@ -1,5 +1,5 @@
 Name:     ocaml-pcre
-Version:  7.3.4
+Version:  7.4.3
 Release:  0.1%{dist}
 Summary:  OCAML PCRE Bindings
 
@@ -10,11 +10,11 @@ URL:      https://github.com/mmottl/pcre-ocaml
 Source0:  https://github.com/mmottl/pcre-ocaml/releases/download/%{version}/pcre-%{version}.tbz
 
 
-BuildRequires: jbuilder
 BuildRequires: ocaml
 BuildRequires: ocaml-findlib
 BuildRequires: ocaml-base-devel
 BuildRequires: ocaml-configurator-devel
+BuildRequires: ocaml-dune
 BuildRequires: ocaml-sexplib0-devel
 BuildRequires: ocaml-stdio-devel
 BuildRequires: pcre
@@ -38,8 +38,8 @@ files for developing applications that use %{name}.
 
 %build
 pushd src
-jbuilder external-lib-deps --missing --profile dev pcre.cma libpcre_stubs.a
-jbuilder build --dev
+dune external-lib-deps --missing --profile dev pcre.cma libpcre_stubs.a
+dune build
 popd
 dune build @install
 
@@ -73,6 +73,10 @@ popd
 %endif
 
 %changelog
+* Sat May  2 2020 Lucas Bickel <hairmare@rabe.ch> - 7.4.3-0.1
+- Bump to 7.4.3
+- Switch to using dune instead of jbuilder
+
 * Sun Dec 23 2018 Lucas Bickel <hairmare@rabe.ch> - 7.3.4-0.1
 - Fix jbuilder call for non x86_64 archs
 
